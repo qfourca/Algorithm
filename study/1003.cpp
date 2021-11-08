@@ -3,30 +3,36 @@ using namespace std;
 int zeroCall, oneCall;
 int fibo(int n)
 {
-	if (n == 0 || n == 1)
+	if (n == 0)
 	{
-		switch (n)
-		{
-		case 0: zeroCall++; break;
-		case 1: oneCall++; break;
-		}
-		return n;
+		zeroCall++;
+		return 0;
+	}
+	else if (n == 1)
+	{
+		oneCall++;
+		return 1;
 	}
 	else
+	{
 		return fibo(n - 1) + fibo(n - 2);
+	}
 }
 int main()
 {
+	int arr[10000];
 	int times;
 	cin >> times;
 	for (int i = 0; i < times; i++)
 	{
-		int x = 0;
-		cin >> x;
-		fibo(x);
-		cout << zeroCall << ' ' << oneCall << '\n';
+		cin >> arr[i];
+	}
+	printf("\n");
+	for (int i = 0; i < times; i++)
+	{
+		fibo(arr[i]);
+		printf("%d %d\n", zeroCall, oneCall);
 		zeroCall = 0;
 		oneCall = 0;
 	}
-	return 0;
 }
